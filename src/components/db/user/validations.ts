@@ -1,5 +1,8 @@
 import { z } from "zod"
-
+export const verifyToken = z.object({
+  chatId: z.number(),
+  token: z.string(),
+})
 export const createUserSchema = z
   .object({
     chatId: z.number(),
@@ -12,7 +15,13 @@ export const createUserSchema = z
     isBot: z.boolean().optional(),
   })
   .extend({
-    token: z.object({ hashedToken: z.string() }).optional(),
+    tokens: z
+      .object({
+        hashedToken: z.string(),
+        type: z.string(),
+      })
+      .array()
+      .optional(),
   })
 export const updateUserSchema = createUserSchema
 export const getUserSchema = z.object({

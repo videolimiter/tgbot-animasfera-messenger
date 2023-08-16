@@ -1,12 +1,12 @@
-import express from "express"
+import express, { Request, Response, NextFunction } from "express"
 import TelegramBot from "./components/telegram/telegramBot"
 import apiRouter from "./components/routers/apiRouter"
 import i18next from "i18next"
-import { login } from "telegraf/typings/button"
 import getUser from "./components/db/user/getUser"
 import createUser from "./components/db/user/createUser"
-import db from "./components/db/db"
 import updateUser from "./components/db/user/updateUser"
+import errorHandler from "./components/express/errorHandler"
+
 require("dotenv").config()
 
 const app = express()
@@ -24,7 +24,10 @@ i18next.init({
 const telegramBotToken = process.env.TELEGRAM_TOKEN || ""
 const bot = TelegramBot.getInstance(telegramBotToken)
 
-bot.launch()
+bot.on("message", (ctx) => {
+  const message = ctx.message
+  console.log(message)
+})
 
 bot.start(async (ctx) => {
   try {
@@ -39,7 +42,6 @@ bot.start(async (ctx) => {
           tgLanguage: ctx.from.language_code,
         })
       }
-      ctx.reply(i18next.t("greeting", { lng: ctx.from?.language_code || "ru" }))
     } else {
       const user = await createUser({
         chatId: ctx.from.id,
@@ -47,7 +49,6 @@ bot.start(async (ctx) => {
         tgLanguage: ctx.from.language_code || "ru",
       })
       if (user) {
-        ctx.reply("Пользователь создан")
       }
     }
   } catch (error) {}
@@ -55,10 +56,13 @@ bot.start(async (ctx) => {
 
 process.once("SIGINT", () => bot.stop("SIGINT"))
 process.once("SIGTERM", () => bot.stop("SIGTERM"))
+bot.launch()
 
 app.use(express.json())
 
 app.use("/api", apiRouter)
+
+app.use(errorHandler)
 
 app.listen(port, () => {
   console.log(`Animasfera TelegramBot listening on port ${port}`)

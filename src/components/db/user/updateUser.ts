@@ -15,9 +15,13 @@ const updateUser = async (data: updateUserSchema) => {
     return console.log("User not found")
   }
 
-  let { token, ...userData } = data as any
-  if (token) {
-    userData.tokens = { deleteMany: {}, create: token }
+  let { tokens, ...userData } = data as any
+  if (tokens) {
+    userData.tokens = {
+      deleteMany: {},
+      create: tokens.map((token: any) => token),
+    }
+    // { , create: token }
   }
   const user = await db.user.update({
     where: { chatId: userData.chatId },

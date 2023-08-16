@@ -1,4 +1,5 @@
 {
   "greeting": "Hello eptat'!",
-  "successRegistration":" Welcome !!! Success Registration "
+  "successRegistration": "Congratulations! \nSuccessful registration of communication with the bot!",
+  "successUpdateRegistration": "Successfully updated connection with the bot"
 }

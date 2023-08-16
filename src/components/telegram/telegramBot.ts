@@ -1,10 +1,10 @@
 import { Telegraf } from "telegraf"
-
 const TelegramBot = (() => {
   let instance: Telegraf
 
   const createInstance = (token: string) => {
     const bot = new Telegraf(token)
+
     return bot
   }
 

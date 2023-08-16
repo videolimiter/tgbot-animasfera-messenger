@@ -1,4 +1,5 @@
 {
   "greeting": "Здарова ёптать!",
-  "successRegistration":" Добро пожаловать! Успешная регистрация"
+  "successRegistration": "Поздравляем! Успешная регистрация связи с ботом!",
+  "successUpdateRegistration": "Успешное обновление связи с ботом"
 }
