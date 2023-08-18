@@ -6,6 +6,6 @@ export default function errorHandler(
   res: Response,
   next: NextFunction
 ) {
-  console.error(error) // выводим ошибку в консоль
-  res.status(500).json({ error: "Something went wrong" }) // отправляем ответ с ошибкой клиенту
+  console.error("Something went wrong: ", error)
+  res.status(500).json({ error: "Something went wrong" })
 }
