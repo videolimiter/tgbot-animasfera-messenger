@@ -4,8 +4,8 @@ const TelegramBot = (() => {
 
   const createInstance = (token: string) => {
     const bot = new Telegraf(token)
-    bot.catch((error: any) => {
-      console.error("Telegraf Error:", error)
+    bot.catch((err, ctx) => {
+      console.log(`Ooops, encountered an error for ${ctx.updateType}`, err)
     })
     return bot
   }

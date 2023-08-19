@@ -23,16 +23,13 @@ i18next.init({
 
 app.use(express.json())
 
-bot.catch((error) => {
-  console.error("Ошибка Telegraf:", error)
-})
-
 app.use("/api", apiRouter)
 
 process.once("SIGINT", () => bot.stop("SIGINT"))
 process.once("SIGTERM", () => bot.stop("SIGTERM"))
 
 bot.launch()
+
 app.use(errorHandler)
 app.listen(port, () => {
   console.log(`Animasfera TelegramBot listening on port ${port}`)
