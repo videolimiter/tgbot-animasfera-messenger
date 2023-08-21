@@ -2,9 +2,7 @@ import express, { NextFunction, Request, Response } from "express"
 import TelegramBot from "./components/telegram/telegramBot"
 import apiRouter from "./components/routers/apiRouter"
 import i18next from "i18next"
-
 import errorHandler from "./components/express/errorHandler"
-import { Context, Scenes, TelegramError, session } from "telegraf"
 
 require("dotenv").config()
 
@@ -27,6 +25,16 @@ app.use("/api", apiRouter)
 
 process.once("SIGINT", () => bot.stop("SIGINT"))
 process.once("SIGTERM", () => bot.stop("SIGTERM"))
+
+bot.on("callback_query", (ctx) => {
+  const data = JSON.parse(JSON.stringify(ctx.callbackQuery))
+  console.log(data.data)
+})
+
+bot.action("messageReply", async (ctx) => {
+  ctx.scene.enter("replyToLeelaScene")
+})
+
 bot.launch()
 
 

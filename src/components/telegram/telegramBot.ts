@@ -9,20 +9,10 @@ const TelegramBot = (() => {
     bot.catch((err, ctx) => {
       console.log(`Ooops, encountered an error for ${ctx.updateType}`, err)
     })
-    const { enter, leave } = Scenes.Stage
-
-    const greeterScene = new Scenes.BaseScene<Scenes.SceneContext>("greeter")
-    greeterScene.enter((ctx) => ctx.reply("Hi"))
-    greeterScene.leave((ctx) => ctx.reply("Bye"))
-    greeterScene.hears("hi", (ctx) => ctx.scene.leave())
-    greeterScene.on("message", (ctx) => ctx.reply("Send `hi`"))
 
     const stage = new Scenes.Stage([replyToLeelaScene])
-
     bot.use(session())
     bot.use(stage.middleware())
-
-    bot.command("scenese", async (ctx) => ctx.scene.enter("greeter"))
 
     return bot
   }
