@@ -1,5 +1,9 @@
 {
+  "Cancel": "Cancel",
+  "buttonReplyText": "Reply",
   "greeting": "Hello eptat'!",
+  "replyToLeelaSceneEnter": "Enter the text of your message",
+  "replyToLeelaSceneLeave": "Message sent",
   "successRegistration": "Congratulations! \nSuccessful registration of communication with the bot!",
   "successUpdateRegistration": "Successfully updated connection with the bot"
 }

@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 import TelegramBot from "../../telegram/telegramBot"
-import { SendTextMessage, SendTextMessageType } from "./validations"
-
+import { SendNotificationSchema, SendNotificationType } from "./validations"
 
 const textNotificationApi = (
   req: Request,
@@ -11,8 +10,8 @@ const textNotificationApi = (
   const bot = TelegramBot.getInstance(process.env.TELEGRAM_TOKEN || "")
 
   const data = req.body
-  SendTextMessage.parse(data)
-  const { chatId, text }: SendTextMessageType = req.body
+  SendNotificationSchema.parse(data)
+  const { chatId, text }: SendNotificationType = req.body
 
   if (typeof chatId === "number") {
     bot.telegram

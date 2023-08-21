@@ -1,11 +1,16 @@
-import { z, ZodUnion, ZodArray } from "zod"
+import { number, z } from "zod"
 
-const NumberArray = z.array(z.number())
-const ChatId = z.union([z.number(), NumberArray])
-
-export const SendTextMessage = z.object({
-  chatId: ChatId,
+export const SendNotificationSchema = z.object({
+  chatId: z.union([z.number(), z.array(z.number())]),
   text: z.string(),
+  buttons: z.array(
+    z.object({
+      url: z.string().optional(),
+      params: z.object({}).optional(),
+      type: z.string(),
+      label: z.string(),
+    })
+  ),
 })
 
-export type SendTextMessageType = z.infer<typeof SendTextMessage>
+export type SendNotificationType = z.infer<typeof SendNotificationSchema>

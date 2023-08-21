@@ -15,9 +15,9 @@
   },
   "keywords": [
     "tgbot",
-    "animasfera"
+    "animasfera" 
   ],
-  "enabledApiProposals-property": [],
+  "enabledApiProposals-property": ["lokalise.i18n-ally"],
   "author": "R.P.Shtepin",
   "license": "ISC",
   "devDependencies": {

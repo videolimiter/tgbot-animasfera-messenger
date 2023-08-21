@@ -4,7 +4,7 @@ import apiRouter from "./components/routers/apiRouter"
 import i18next from "i18next"
 
 import errorHandler from "./components/express/errorHandler"
-import { Context, TelegramError } from "telegraf"
+import { Context, Scenes, TelegramError, session } from "telegraf"
 
 require("dotenv").config()
 
@@ -27,8 +27,8 @@ app.use("/api", apiRouter)
 
 process.once("SIGINT", () => bot.stop("SIGINT"))
 process.once("SIGTERM", () => bot.stop("SIGTERM"))
-
 bot.launch()
+
 
 app.use(errorHandler)
 app.listen(port, () => {
