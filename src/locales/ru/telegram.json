@@ -1,9 +1,8 @@
 {
+  "greeting": " Теперь бот может отправлять вам уведомления.",
   "Cancel": "Отмена",
   "buttonReplyText": "Ответить",
   "bye": "Bye",
-  "greeting": "Здарова ёптать!",
-  "nazhmi-na-knopku": "Нажми на кнопку",
   "replyToLeelaSceneEnter": "Введите текст вашего сообщения",
   "replyToLeelaSceneLeave": "Сообщение отправлено",
   "successRegistration": "Поздравляем! Успешная регистрация связи с ботом!",

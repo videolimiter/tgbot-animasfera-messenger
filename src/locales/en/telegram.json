@@ -1,7 +1,7 @@
 {
+  "greeting": "Now the bot can send you notifications.",
   "Cancel": "Cancel",
   "buttonReplyText": "Reply",
-  "greeting": "Hello eptat'!",
   "replyToLeelaSceneEnter": "Enter the text of your message",
   "replyToLeelaSceneLeave": "Message sent",
   "successRegistration": "Congratulations! \nSuccessful registration of communication with the bot!",

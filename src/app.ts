@@ -26,15 +26,13 @@ app.use("/api", apiRouter)
 process.once("SIGINT", () => bot.stop("SIGINT"))
 process.once("SIGTERM", () => bot.stop("SIGTERM"))
 
-bot.on("callback_query", (ctx) => {
-  const data = JSON.parse(JSON.stringify(ctx.callbackQuery))
-  console.log(data.data)
+bot.start((ctx) => {
+  ctx.reply(
+    i18next.t("greeting", {
+      lng: ctx.from?.language_code || "en",
+    })
+  )
 })
-
-bot.action("messageReply", async (ctx) => {
-  ctx.scene.enter("replyToLeelaScene")
-})
-
 bot.launch()
 
 
