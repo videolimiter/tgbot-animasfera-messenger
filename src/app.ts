@@ -28,6 +28,13 @@ app.use("/api", apiRouter)
 process.once("SIGINT", () => bot.stop("SIGINT"))
 process.once("SIGTERM", () => bot.stop("SIGTERM"))
 
+bot.start((ctx) => {
+  ctx.reply(
+    i18next.t("greeting", {
+      lng: ctx.from?.language_code || "en",
+    })
+  )
+})
 bot.launch()
 
 app.use(errorHandler)
