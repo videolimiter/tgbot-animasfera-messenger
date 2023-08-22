@@ -6,9 +6,19 @@ export const SendNotificationSchema = z.object({
   buttons: z
     .array(
       z.object({
-        url: z.string().optional(),
-        type: z.string(),
         label: z.string(),
+        data: z.union([
+          z.object({
+            callback: z.union([
+              z.object({
+                name: z.literal("messageReply"),
+                roomId: z.number(),
+              }),
+              z.object({ name: z.string() }),
+            ]),
+          }),
+          z.object({ url: z.string() }),
+        ]),
       })
     )
     .optional(),

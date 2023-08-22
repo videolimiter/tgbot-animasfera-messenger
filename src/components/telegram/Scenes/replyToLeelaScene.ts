@@ -1,8 +1,9 @@
 import i18next from "i18next"
 import { Markup, Scenes } from "telegraf"
 import { message } from "telegraf/filters"
+import { LeelaContext } from "../telegramBot"
 
-const replyToLeelaScene = new Scenes.BaseScene<Scenes.SceneContext>(
+const replyToLeelaScene = new Scenes.BaseScene<LeelaContext>(
   "replyToLeelaScene"
 )
 let enterSceneMgsId: number
@@ -40,7 +41,11 @@ replyToLeelaScene.action("cancel", async (ctx) => {
 })
 
 replyToLeelaScene.on(message("text"), async (ctx) => {
+  ctx.text = ctx.message.text
+
+  console.log("TEXT: ", ctx.text)
   await ctx.deleteMessage(enterSceneMgsId)
+
   await ctx.reply(
     i18next.t("replyToLeelaSceneLeave", {
       lng: ctx.from?.language_code || "en",
