@@ -4,11 +4,7 @@ import { SendNotificationSchema, SendNotificationType } from "./validations"
 import { Markup } from "telegraf"
 import { url } from "inspector"
 
-const textNotificationApi = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const messageApi = (req: Request, res: Response, next: NextFunction) => {
   const bot = TelegramBot.getInstance(process.env.TELEGRAM_TOKEN || "")
 
   const data = req.body
@@ -64,4 +60,4 @@ const textNotificationApi = (
   res.status(200).json({ message: "OK" })
   next()
 }
-export default textNotificationApi
+export default messageApi

@@ -48,9 +48,7 @@ bot.on("callback_query", async (ctx: LeelaContext) => {
   console.log(data)
 })
 
-
 bot.launch()
-
 
 app.use(errorHandler)
 app.listen(port, () => {

@@ -4,10 +4,6 @@ import verifySystemToken from "../express/verifySystemToken"
 
 const router = express.Router()
 
-router.post(
-  "/textNotification",
-  verifySystemToken,
-  apiController().textNotification
-)
+router.post("/message", verifySystemToken, apiController().message)
 
 export default router
