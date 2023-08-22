@@ -1,12 +1,11 @@
 import { Request, Response, NextFunction } from "express"
-import textNotificationApi from "./api/textNotificationApi"
+import messageApi from "./api/messageApi"
 require("dotenv").config()
 
 const apiController = () => {
-  const textNotification = (req: Request, res: Response, next: NextFunction) =>
-    textNotificationApi(req, res, next)
-
-  return { textNotification }
+  const message = (req: Request, res: Response, next: NextFunction) =>
+    messageApi(req, res, next)
+  return { message }
 }
 
 export default apiController

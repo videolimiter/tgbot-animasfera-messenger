@@ -2,9 +2,8 @@ import express, { NextFunction, Request, Response } from "express"
 import TelegramBot from "./components/telegram/telegramBot"
 import apiRouter from "./components/routers/apiRouter"
 import i18next from "i18next"
-
 import errorHandler from "./components/express/errorHandler"
-import { Context, TelegramError } from "telegraf"
+
 
 require("dotenv").config()
 

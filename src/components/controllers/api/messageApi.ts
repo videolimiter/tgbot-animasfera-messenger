@@ -2,12 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import TelegramBot from "../../telegram/telegramBot"
 import { SendTextMessage, SendTextMessageType } from "./validations"
 
-
-const textNotificationApi = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const messageApi = (req: Request, res: Response, next: NextFunction) => {
   const bot = TelegramBot.getInstance(process.env.TELEGRAM_TOKEN || "")
 
   const data = req.body
@@ -41,4 +36,4 @@ const textNotificationApi = (
   res.status(200).json({ message: "OK" })
   next()
 }
-export default textNotificationApi
+export default messageApi
