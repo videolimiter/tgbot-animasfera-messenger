@@ -26,8 +26,11 @@ const replyToMessage = (
         case LeelaMessageTags.chat:
           leelaWebHooks().tgBot({
             event: LeelaWebHooksEvents.replyMessage,
-            roomId: Number(getTagValue(replyMsgText, LeelaMessageTags.chat)),
-            message: { chatId: ctx.chat.id, body: text },
+            chatId: ctx.chat.id,
+            message: {
+              roomId: Number(getTagValue(replyMsgText, LeelaMessageTags.chat)),
+              message: text,
+            },
           })
           break
 
