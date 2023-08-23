@@ -1,9 +1,12 @@
-import express, { NextFunction, Request, Response } from "express"
-import TelegramBot, { LeelaContext } from "./components/telegram/telegramBot"
+import express from "express"
+import TelegramBot from "./components/telegram/telegramBot"
 import apiRouter from "./components/routers/apiRouter"
 import i18next from "i18next"
 import errorHandler from "./components/express/errorHandler"
-import { Context, Scenes } from "telegraf"
+import { message } from "telegraf/filters"
+import getTagValue from "./components/helpers/getTagValue"
+import findTags from "./components/helpers/findTags"
+import replyToMessage from "./components/telegram/handlers/replyToMessage"
 
 require("dotenv").config()
 
@@ -34,20 +37,22 @@ bot.start(async (ctx) => {
     })
   )
 })
-// bot.action("messageReply", async (ctx) => ctx.scene.enter("replyToLeelaScene"))
 
-bot.on("callback_query", async (ctx: LeelaContext) => {
-  const data = JSON.parse(JSON.stringify(ctx.callbackQuery)).data
-  if (JSON.parse(data).name == "messageReply") {
-    console.log(JSON.parse(data).roomId)
-    ctx.roomId = Number(JSON.parse(data).roomId)
-    await ctx.scene
-      .enter("replyToLeelaScene")
-      .then(() => console.log("ebana ", ctx.text))
+bot.on(message("text"), (ctx) => {
+  if (ctx.message.reply_to_message) {
+    replyToMessage(ctx)
   }
-  console.log(data)
 })
 
+// bot.on("callback_query", async (ctx) => {
+//   const data = JSON.parse(JSON.stringify(ctx.callbackQuery)).data
+//   console.log(data)
+
+//   if (JSON.parse(data).name == "messageReply") {
+//     ctx.roomId = Number(JSON.parse(data).roomId)
+//     await ctx.scene.enter("replyToLeelaScene")
+//   }
+// })
 bot.launch()
 
 app.use(errorHandler)

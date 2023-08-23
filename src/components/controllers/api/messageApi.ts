@@ -1,15 +1,15 @@
 import { NextFunction, Request, Response } from "express"
 import TelegramBot from "../../telegram/telegramBot"
-import { SendNotificationSchema, SendNotificationType } from "./validations"
-import { Markup } from "telegraf"
-import { url } from "inspector"
+import { MessageSchema, MessageType } from "./validations"
+import {  Markup } from "telegraf"
+
 
 const messageApi = (req: Request, res: Response, next: NextFunction) => {
   const bot = TelegramBot.getInstance(process.env.TELEGRAM_TOKEN || "")
 
   const data = req.body
-  SendNotificationSchema.parse(data)
-  const { chatId, text, buttons }: SendNotificationType = req.body
+  MessageSchema.parse(data)
+  const { chatId, text, buttons }: MessageType = req.body
 
   if (buttons) {
     console.log("Buttons: ", buttons)
@@ -40,6 +40,7 @@ const messageApi = (req: Request, res: Response, next: NextFunction) => {
       .catch((err) => console.log(err))
   } else if (Array.isArray(chatId)) {
     console.log("chatId is an array:", chatId)
+
     const sendMessages = async (
       chatIds: number[],
       text: string
@@ -53,6 +54,7 @@ const messageApi = (req: Request, res: Response, next: NextFunction) => {
           .catch((err) => console.log(err))
       }
     }
+
     sendMessages(chatId, text).then(() => console.log("Отправка окончена"))
   } else {
     return console.log("Invalid chatId type")

@@ -7,7 +7,8 @@ const replyToLeelaScene = new Scenes.BaseScene<LeelaContext>(
   "replyToLeelaScene"
 )
 let enterSceneMgsId: number
-let replyMessageId: number
+let replyMsgId: number
+let roomId: number
 replyToLeelaScene.enter(async (ctx) => {
   const res = await ctx.reply(
     i18next.t("replyToLeelaSceneEnter", {
@@ -28,10 +29,10 @@ replyToLeelaScene.enter(async (ctx) => {
       },
     }
   )
-
-  console.log(res.message_id)
+  roomId = ctx.roomId!
+  console.log("inSceneRoomId: ", ctx.roomId)
   enterSceneMgsId = res.message_id
-  replyMessageId = ctx.callbackQuery!.message!.message_id
+  replyMsgId = ctx.callbackQuery!.message!.message_id
 })
 
 replyToLeelaScene.action("cancel", async (ctx) => {
@@ -41,26 +42,23 @@ replyToLeelaScene.action("cancel", async (ctx) => {
 })
 
 replyToLeelaScene.on(message("text"), async (ctx) => {
-  ctx.text = ctx.message.text
-
-  console.log("TEXT: ", ctx.text)
+  await ctx.reply(ctx.message.text + " roomid " + roomId, {
+    reply_to_message_id: replyMsgId,
+  })
+  await ctx.deleteMessage()
   await ctx.deleteMessage(enterSceneMgsId)
 
-  await ctx.reply(
-    i18next.t("replyToLeelaSceneLeave", {
-      lng: ctx.from?.language_code || "en",
-    })
-  )
-  await ctx.telegram.editMessageReplyMarkup(
-    ctx.from.id,
-    replyMessageId,
-    undefined,
-    {
-      inline_keyboard: [
-        [Markup.button.url("Вы ответили за базар", "https://www.google.com")],
-      ],
-    }
-  )
+  // await ctx.telegram.editMessageReplyMarkup(
+  //   ctx.from.id,
+  //   replyMsgId,
+  //   undefined,
+  //   {
+  //     inline_keyboard: [
+  //       [Markup.button.url("Вы ответили за базар", "https://www.google.com")],
+  //     ],
+  //   }
+  // )
+
   await ctx.scene.leave()
 })
 

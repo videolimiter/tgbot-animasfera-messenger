@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express"
-import messageApi from "./api/messageApi"
+import messageApi from "./messageApi"
+
 require("dotenv").config()
 
 const apiController = () => {
