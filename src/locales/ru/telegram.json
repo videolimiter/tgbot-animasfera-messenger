@@ -1,9 +1,12 @@
 {
-  "greeting": " Теперь бот может отправлять вам уведомления.",
   "Cancel": "Отмена",
   "buttonReplyText": "Ответить",
+  "connectToLeelaSceneEnter": "Введите ваш email на сайте leela.game",
+  "greeting": " Теперь бот может отправлять вам уведомления.\n Что связать бота leela.game отправте команду /connect",
   "replyToLeelaSceneEnter": "Введите текст вашего сообщения",
   "replyToLeelaSceneLeave": "Сообщение отправлено",
   "successRegistration": "Поздравляем! Успешная регистрация связи с ботом!",
-  "successUpdateRegistration": "Успешное обновление связи с ботом"
+  "successUpdateRegistration": "Успешное обновление связи с ботом",
+  "verifyLeelaConnect": "Зайдите на leela.game в раздел Настройки->Уведомления.\nПосле введите код верфикации.",
+  "wrongEmailFormat": "Неверный формат email. Попробуйте ещё раз."
 }

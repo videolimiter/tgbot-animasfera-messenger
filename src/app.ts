@@ -4,8 +4,6 @@ import apiRouter from "./components/routers/apiRouter"
 import i18next from "i18next"
 import errorHandler from "./components/express/errorHandler"
 import { message } from "telegraf/filters"
-import getTagValue from "./components/helpers/getTagValue"
-import findTags from "./components/helpers/findTags"
 import replyToMessage from "./components/telegram/handlers/replyToMessage"
 
 require("dotenv").config()
@@ -38,11 +36,16 @@ bot.start(async (ctx) => {
   )
 })
 
-bot.on(message("text"), (ctx) => {
+bot.command("connect", async (ctx) => {
+  ctx.scene.enter("connectToLeela")
+})
+
+bot.on(message("text"), async (ctx) => {
   if (ctx.message.reply_to_message) {
     replyToMessage(ctx)
   }
 })
+
 
 // bot.on("callback_query", async (ctx) => {
 //   const data = JSON.parse(JSON.stringify(ctx.callbackQuery)).data

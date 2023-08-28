@@ -19,7 +19,8 @@ const replyToMessage = (
     JSON.stringify(ctx.message.reply_to_message)
   ).text
   const text = ctx.message.text
-  const foundTags = findTags(replyMsgText)
+  const foundTags = findTags(JSON.stringify(replyMsgText))
+
   if (foundTags) {
     if (foundTags.length === 1) {
       switch (foundTags[0]) {

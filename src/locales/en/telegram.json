@@ -1,9 +1,12 @@
 {
-  "greeting": "Now the bot can send you notifications.",
   "Cancel": "Cancel",
   "buttonReplyText": "Reply",
+  "connectToLeelaSceneEnter": "Enter your email at leela.game",
+  "greeting": "Now the bot can send you notifications.",
   "replyToLeelaSceneEnter": "Enter the text of your message",
   "replyToLeelaSceneLeave": "Message sent",
   "successRegistration": "Congratulations! \nSuccessful registration of communication with the bot!",
-  "successUpdateRegistration": "Successfully updated connection with the bot"
+  "successUpdateRegistration": "Successfully updated connection with the bot",
+  "verifyLeelaConnect": "Go to leela.game under Settings->Notifications.\n\nAfter enter the verification code.",
+  "wrongEmailFormat": "Invalid email format. \nTry again."
 }
