@@ -1,12 +1,13 @@
 import { LeelaTgBotWebHookSchema, LeelaTgBotWebHookType } from "../validations"
-import leelaTgBotApi from "./leelaTgBotApi"
+import leelaTgBotApiPost from "./leelaTgBotApiPost"
 
 const leelaWebHooks = () => {
-  const tgBot = (data: LeelaTgBotWebHookType) => {
+  const tgBotPost = async (data: LeelaTgBotWebHookType) => {
     LeelaTgBotWebHookSchema.parse(data)
-    leelaTgBotApi(data)
+    return await leelaTgBotApiPost(data)
   }
-  return { tgBot }
+
+  return { tgBotPost }
 }
 
 export default leelaWebHooks

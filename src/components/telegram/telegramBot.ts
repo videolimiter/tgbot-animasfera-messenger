@@ -1,8 +1,6 @@
 import { Context, Scenes, Telegraf, session } from "telegraf"
 import replyToLeelaScene from "./scenes/replyToLeelaScene"
-import connectToLeelaScene, {
-  codeFromLeelaScene,
-} from "./scenes/connectToLeelaScene"
+import connectToLeelaScene from "./scenes/connectToLeelaScene"
 import LocalSession from "telegraf-session-local"
 
 export interface SessionData extends Scenes.SceneSession {
@@ -42,7 +40,6 @@ const TelegramBot = (() => {
     const stage = new Scenes.Stage<LeelaContext>([
       replyToLeelaScene,
       connectToLeelaScene,
-      codeFromLeelaScene,
     ])
     //bot.use(session())
 

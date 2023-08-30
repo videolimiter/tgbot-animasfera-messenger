@@ -25,7 +25,7 @@ const replyToMessage = (
     if (foundTags.length === 1) {
       switch (foundTags[0]) {
         case LeelaMessageTags.chat:
-          leelaWebHooks().tgBot({
+          leelaWebHooks().tgBotPost({
             event: LeelaWebHooksEvents.replyMessage,
             chatId: ctx.chat.id,
             message: {

@@ -1,8 +1,10 @@
 {
   "Cancel": "Cancel",
   "buttonReplyText": "Reply",
-  "connectToLeelaSceneEnter": "Enter your email at leela.game",
-  "greeting": "Now the bot can send you notifications.",
+  "commandHelpReply": "This bot delivers notifications and private messages from Leela.Game.\nFirst you need to connect the bot to your Leela.Game account. Enter /connect command, then go to https://leela.game/settings/notifications, and click the button \"Connect @animasfera_bot\". Then copy the code to the buffer and paste it to the bot chat. The bot will check the code, and if it's correct - Leela.Game will send you a greeting message. After that you will start receiving notifications from Leela.Game.\nWhen bot delivers you a private message, you can reply to it as you do it usually on Telegram: click (or tap) the message, choose \"Reply\", enter the reply text, click \"Send\". Your reply will get delivered to the corresponding chat on Leela.Game.",
+  "connectToLeelaError404": "Incorrect code. \nTry entering again.",
+  "connectToLeelaSceneEnter": "Enter the connection code located at\n\nhttps://leela.game/settings/notifications",
+  "greeting": "Now the bot can send you notifications.\n \nTo connect the bot to leela.game send the command /connect",
   "replyToLeelaSceneEnter": "Enter the text of your message",
   "replyToLeelaSceneLeave": "Message sent",
   "successRegistration": "Congratulations! \nSuccessful registration of communication with the bot!",

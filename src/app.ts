@@ -22,7 +22,6 @@ i18next.init({
 })
 
 app.use(express.json())
-
 app.use("/api", apiRouter)
 
 process.once("SIGINT", () => bot.stop("SIGINT"))
@@ -40,22 +39,20 @@ bot.command("connect", async (ctx) => {
   ctx.scene.enter("connectToLeela")
 })
 
+bot.command("help", async (ctx) => {
+  ctx.reply(
+    i18next.t("commandHelpReply", {
+      lng: ctx.from?.language_code || "en",
+    })
+  )
+})
+
 bot.on(message("text"), async (ctx) => {
   if (ctx.message.reply_to_message) {
     replyToMessage(ctx)
   }
 })
 
-
-// bot.on("callback_query", async (ctx) => {
-//   const data = JSON.parse(JSON.stringify(ctx.callbackQuery)).data
-//   console.log(data)
-
-//   if (JSON.parse(data).name == "messageReply") {
-//     ctx.roomId = Number(JSON.parse(data).roomId)
-//     await ctx.scene.enter("replyToLeelaScene")
-//   }
-// })
 bot.launch()
 
 app.use(errorHandler)

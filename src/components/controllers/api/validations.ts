@@ -24,10 +24,13 @@ export const MessageSchema = z.object({
 export const LeelaTgBotWebHookSchema = z.object({
   event: z.string(),
   chatId: z.number(),
-  message: z.object({
-    roomId: z.number(),
-    message: z.string(),
-  }),
+  token: z.string().optional(),
+  message: z
+    .object({
+      roomId: z.number(),
+      message: z.string(),
+    })
+    .optional(),
 })
 export type LeelaTgBotWebHookType = z.infer<typeof LeelaTgBotWebHookSchema>
 export type MessageType = z.infer<typeof MessageSchema>
