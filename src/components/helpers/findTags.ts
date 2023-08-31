@@ -1,11 +1,15 @@
-const findTags = (text: string): string[] => {
-  const firstString = text.split("\n")
-  const regex = /#(\w+)_/g
-  const matches = firstString[0].match(regex)
-  if (matches) {
-    return matches.map((match) => match.slice(1, -1))
+const findTags = (text: string): string[] | null => {
+  const firstString = text.split("\n")[0]
+  const regex = /#(\w+)/g
+  const matches = []
+  let match
+
+  while ((match = regex.exec(firstString))) {
+    matches.push(match[1])
   }
-  return []
+  if (matches) {
+    return matches
+  }
+  return null
 }
 export default findTags
-  

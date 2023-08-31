@@ -1,14 +1,8 @@
 {
   "Cancel": "Cancel",
-  "buttonReplyText": "Reply",
-  "commandHelpReply": "This bot delivers notifications and private messages from Leela.Game.\nFirst you need to connect the bot to your Leela.Game account. Enter /connect command, then go to https://leela.game/settings/notifications, and click the button \"Connect @animasfera_bot\". Then copy the code to the buffer and paste it to the bot chat. The bot will check the code, and if it's correct - Leela.Game will send you a greeting message. After that you will start receiving notifications from Leela.Game.\nWhen bot delivers you a private message, you can reply to it as you do it usually on Telegram: click (or tap) the message, choose \"Reply\", enter the reply text, click \"Send\". Your reply will get delivered to the corresponding chat on Leela.Game.",
+  "commandHelpReply": "This bot delivers notifications and private messages from Leela.Game.\n\nWhen bot delivers you a private message or a comment - you can reply to it as you do it usually on Telegram: click on the message, choose \"Reply\", enter the reply text, click \"Send\". Your reply will get delivered to the corresponding chat on Leela.Game.",
+  "commandStartReply": "Now the bot can send you notifications.\n\nTo connect the bot to leela.game send the command /connect",
   "connectToLeelaError404": "Incorrect code.\nTry entering again.",
-  "connectToLeelaSceneEnter": "Enter the connection code located at https://leela.game/settings/notifications",
-  "greeting": "Now the bot can send you notifications.\nTo connect the bot to leela.game send the command /connect",
-  "replyToLeelaSceneEnter": "Enter the text of your message",
-  "replyToLeelaSceneLeave": "Message sent",
-  "successRegistration": "Congratulations! Successful registration of communication with the bot!",
-  "successUpdateRegistration": "Successfully updated connection with the bot",
-  "verifyLeelaConnect": "Go to leela.game under Settings->Notifications.\n\nAfter enter the verification code.",
-  "wrongEmailFormat": "Invalid email format. Try again."
+  "connectToLeelaSceneEnter": "Enter the connection code located at\nhttps://leela.game/settings/notifications",
+  "randomInputTextReply": "If you want to reply, click on the desired message and select \"Reply\""
 }

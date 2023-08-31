@@ -36,7 +36,6 @@ connectToLeelaScene.action("cancel", async (ctx) => {
   if (enterConnectSceneMgsId) {
     await ctx.deleteMessage(enterConnectSceneMgsId)
   }
-
   await ctx.scene.leave()
 })
 
@@ -60,6 +59,11 @@ connectToLeelaScene.on(message("text"), async (ctx) => {
     if (enterConnectSceneMgsId) {
       await ctx.deleteMessage(enterConnectSceneMgsId)
     }
+    ctx.reply(
+      i18next.t("commandHelpReply", {
+        lng: ctx.from?.language_code || "en",
+      })
+    )
     ctx.scene.leave()
   } else {
     ctx.reply(

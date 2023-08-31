@@ -29,7 +29,7 @@ process.once("SIGTERM", () => bot.stop("SIGTERM"))
 
 bot.start(async (ctx) => {
   await ctx.reply(
-    i18next.t("greeting", {
+    i18next.t("commandStartReply", {
       lng: ctx.from?.language_code || "en",
     })
   )
@@ -48,9 +48,18 @@ bot.command("help", async (ctx) => {
 })
 
 bot.on(message("text"), async (ctx) => {
-  if (ctx.message.reply_to_message) {
+  if (
+    ctx.message.reply_to_message &&
+    ctx.message.reply_to_message.from?.is_bot
+  ) {
     replyToMessage(ctx)
+    return
   }
+  ctx.reply(
+    i18next.t("randomInputTextReply", {
+      lng: ctx.from?.language_code || "en",
+    })
+  )
 })
 
 bot.launch()
