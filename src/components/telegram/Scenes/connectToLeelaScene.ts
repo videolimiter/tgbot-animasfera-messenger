@@ -59,6 +59,7 @@ connectToLeelaScene.on(message("text"), async (ctx) => {
     if (enterConnectSceneMgsId) {
       await ctx.deleteMessage(enterConnectSceneMgsId)
     }
+
     ctx.reply(
       i18next.t("commandHelpReply", {
         lng: ctx.from?.language_code || "en",
