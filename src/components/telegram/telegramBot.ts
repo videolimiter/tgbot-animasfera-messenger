@@ -1,6 +1,6 @@
 import { Context, Scenes, Telegraf } from "telegraf"
-import connectToLeelaScene from "./scenes/connectToLeelaScene"
 import LocalSession from "telegraf-session-local"
+import connectToLeelaScene from "./scenes/connectToLeelaScene"
 
 export interface SessionData extends Scenes.SceneSession {
   counter: number
